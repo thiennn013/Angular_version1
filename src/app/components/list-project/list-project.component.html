@@ -1,0 +1,98 @@
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Điều kiện tìm kiếm</h3>
+  </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-lg-4">
+              <div class="form-group">
+                <label class="form-label">Bộ phận</label>
+                <input type="text" class="form-control" [(ngModel)]="DIVISION">
+              </div>
+              <p class="text-danger">{{DIVISIONMessage}}</p>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="form-group">
+                  <label class="form-label">Tên dự án</label>
+                  <input type="text" class="form-control" [(ngModel)]="PROJECT_NAME">
+                </div>
+              </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-lg-12  ">
+                <button type="submit" class="btn btn-primary mx-3 float-end" (click)="handleSearch()">Tìm kiếm</button>
+                <button type="submit" class="btn btn-primary float-end" (click)="handleClear()" >Làm sạch </button>
+              </div>
+        </div>
+  </div>
+</div>
+<div class="col-12 col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Kết quả tìm kiếm</h3>
+      </div>
+      <div class="card-content">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-lg">
+              <thead>
+                <tr>
+                  <th class="text-nowrap align-middle text-center" rowspan="2">Project ID</th>
+                  <th class="text-nowrap align-middle text-center" rowspan="2">Devision</th>
+                  <th class="text-nowrap align-middle text-center" rowspan="2">Project Name</th>
+                  <th class="text-nowrap align-middle text-center" rowspan="2">Project Description</th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="2">Number Of Member</th>
+                  <th class="text-nowrap align-middle text-center" rowspan="2">BrSE JP</th>
+                  <th class="text-nowrap align-middle text-center" rowspan="2">Start Date</th>
+                  <th class="text-nowrap align-middle text-center" rowspan="2">End Date</th>
+                  <th class="text-nowrap align-middle text-center" rowspan="2">OS</th>
+                  <th class="text-nowrap align-middle text-center" rowspan="2">Languages/Framework</th>
+                  <th class="text-nowrap align-middle text-center" rowspan="2">Database</th>
+                  <th class="text-nowrap align-middle text-center" rowspan="2">Tools</th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="8">Corresponding phase</th>
+                </tr>
+                <tr>
+                 
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1">VN</th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1">JP</th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1">RD</th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1">BD</th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1">DD</th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1">PM</th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1">UT</th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1">IT</th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1">SP</th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1">OT</th>
+                </tr>
+              </thead>
+              <tbody *ngIf="tableData">
+                <tr  *ngFor="let row of tableData">
+                  <td class="text-bold-500 text-nowrap">{{row.PROJECT_ID}}</td>
+                  <td class="text-bold-500 text-nowrap">{{row.DIVISION}}</td>
+                  <td class="text-bold-500 text-nowrap"><a class="btn-link" (click)="gotoProject(row)">{{row.PROJECT_NAME}}</a></td>
+                  <td class="text-bold-500 text-nowrap">{{row.PROJECT_DESCRIPTION}}</td>
+                  <td class="text-bold-500 text-nowrap">{{row.VN_MEMBER}}</td>
+                  <td class="text-bold-500 text-nowrap">{{row.JP_MEMBER}}</td>
+                  <td class="text-bold-500 text-nowrap">{{row.BRSE}}</td>
+                  <td class="text-bold-500 text-nowrap">{{row.START_DATE}}</td>
+                  <td class="text-bold-500 text-nowrap">{{row.END_DATE}}</td>
+                  <td class="text-bold-500 text-nowrap">{{row.OS}}</td>
+                  <td class="text-bold-500 text-nowrap">{{row.LANG_FRAMEWORK}}</td>
+                  <td class="text-bold-500 text-nowrap">{{row.DATABASE}}</td>
+                  <td class="text-bold-500 text-nowrap">{{row.DEV_TOOL}}</td>
+                  <td class="text-bold-500 text-nowrap">{{row.RD}}</td>
+                  <td class="text-bold-500 text-nowrap">{{row.BD}}</td>
+                  <td class="text-bold-500 text-nowrap">{{row.DD}}</td>
+                  <td class="text-bold-500 text-nowrap">{{row.PM}}</td>
+                  <td class="text-bold-500 text-nowrap">{{row.UT}}</td>
+                  <td class="text-bold-500 text-nowrap">{{row.IT}}</td>
+                  <td class="text-bold-500 text-nowrap">{{row.ST}}</td>
+                  <td class="text-bold-500 text-nowrap">{{row.OP}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,140 @@
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">{{header}}</h3>
+  </div>
+  <div class="card-content">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-3 d-flex flex-column justify-content-between">
+          <h6 class="text-uppercase fs-5 ls-2">DIVISION </h6>
+          <p class="mb-0">{{param.project.DIVISION}}</p>
+        </div>
+        <div class="col-3 d-flex flex-column justify-content-between">
+          <h6 class="text-uppercase fs-5 ls-2">PROJECT NAME</h6>
+          <p class="mb-0">{{param.project.PROJECT_NAME}}</p>
+        </div>
+        <div class="col-3 d-flex flex-column justify-content-between">
+          <h6 class="text-uppercase fs-5 ls-2">PROJECT MEMBER</h6>
+          <p class="mb-0">{{param.project.VN_MEMBER+param.project.JP_MEMBER}}</p>
+        </div>
+        <div class="col-3 d-flex flex-column justify-content-between">
+          <h6 class="text-uppercase fs-5 ls-2">PROJECT LEADER</h6>
+          <p class="mb-0">PL</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="mb-3 col-sm-4 col-lg-3 d-flex flex-column justify-content-between">
+          <label class=" col-form-label">Classification</label>
+          <div class="">
+            <input type="text" class="form-control" [(ngModel)]="CLASSIFICATION">
+            <span class="text-danger">{{CLASSIFICATIONMessage}}</span>
+          </div>
+        </div>
+        <div class="mb-3 col-sm-4 col-lg-3 d-flex flex-column justify-content-between">
+          <label class=" col-form-label">Work content</label>
+          <div class="">
+            <input type="text" class="form-control" [(ngModel)]="WORK_CONTENT">
+            <span class="text-danger">{{WORK_CONTENTMessage}}</span>
+          </div>
+        </div>
+        <div class="mb-3 col-sm-4 col-lg-3 d-flex flex-column justify-content-between">
+          <label class=" col-form-label">Difficulty</label>
+          <div class="">
+            <input type="text" class="form-control" [(ngModel)]="DIFFICULTY">
+            <span class="text-danger">{{DIFFICULTYMessage}}</span>
+          </div>
+        </div>
+        <div class="mb-3 col-sm-4 col-lg-3 d-flex flex-column justify-content-between">
+          <label class=" col-form-label"> Requirement Define</label>
+          <div class="">
+            <select class="form-select" [(ngModel)]="REQUIRE_DEFINE">
+              <option value="0"></option>
+              <ng-container *ngFor="let item of listOfUser">
+                <option [value]="item.EMPLOYEE_ID">{{item.EMPLOYEE_NAME}}</option>
+              </ng-container>
+            </select>
+            <span class="text-danger">{{REQUIRE_DEFINEMessage}}</span>
+          </div>
+        </div>
+        <div class="mb-3 col-sm-4 col-lg-3 d-flex flex-column justify-content-between">
+          <label class=" col-form-label">Basic Design</label>
+          <div class="">
+            <select class="form-select" [(ngModel)]="BASIC_DESIGN">
+              <ng-container *ngFor="let item of listOfUser">
+                <option [value]="item.EMPLOYEE_ID">{{item.EMPLOYEE_NAME}}</option>
+              </ng-container>
+            </select>
+            <span class="text-danger">{{BASIC_DESIGNMessage}}</span>
+          </div>
+        </div>
+        <div class="mb-3 col-sm-4 col-lg-3 d-flex flex-column justify-content-between">
+          <label class=" col-form-label">Detail Design</label>
+          <div class="">
+            <select class="form-select" [(ngModel)]="DETAIL_DESIGN">
+              <option value="0"></option>
+              <ng-container *ngFor="let item of listOfUser">
+                <option [value]="item.EMPLOYEE_ID">{{item.EMPLOYEE_NAME}}</option>
+              </ng-container>
+            </select>
+            <span class="text-danger">{{DETAIL_DESIGNMessage}}</span>
+          </div>
+        </div>
+        <div class="mb-3 col-sm-4 col-lg-3 d-flex flex-column justify-content-between">
+          <label class=" col-form-label">Programmer</label>
+          <div class="">
+            <select class="form-select" [(ngModel)]="PROGRAMMER">
+              <option value="0"></option>
+              <ng-container *ngFor="let item of listOfUser">
+                <option [value]="item.EMPLOYEE_ID">{{item.EMPLOYEE_NAME}}</option>
+              </ng-container>
+            </select>
+            <span class="text-danger">{{PROGRAMMERMessage}}</span>
+          </div>
+        </div>
+        <div class="mb-3 col-sm-4 col-lg-3 d-flex flex-column justify-content-between">
+          <label class=" col-form-label">Unit Tester</label>
+          <div class="">
+            <select class="form-select" [(ngModel)]="UNIT_TESTER">
+              <option value="0"></option>
+              <ng-container *ngFor="let item of listOfUser">
+                <option [value]="item.EMPLOYEE_ID">{{item.EMPLOYEE_NAME}}</option>
+              </ng-container>
+            </select>
+            <span class="text-danger">{{ UNIT_TESTERMessage }}</span>
+          </div>
+        </div>
+        <div class="mb-3 col-sm-4 col-lg-3 d-flex flex-column justify-content-between">
+          <label class=" col-form-label">Integration Tester</label>
+          <div class="">
+            <select class="form-select" [(ngModel)]="INTEGRATION_TESTER">
+              <option value="0"></option>
+              <ng-container *ngFor="let item of listOfUser">
+                <option [value]="item.EMPLOYEE_ID">{{item.EMPLOYEE_NAME}}</option>
+              </ng-container>
+            </select>
+            <span class="text-danger">{{INTEGRATION_TESTERMessage}}</span>
+          </div>
+        </div>
+        <div class="mb-3 col-sm-4 col-lg-3 d-flex flex-column justify-content-between">
+          <label class=" col-form-label">JP Acceptance Tester</label>
+          <div class="">
+            <select class="form-select" [(ngModel)]="ACCEPTANCE_TESTER">
+              <option value="0"></option>
+              <ng-container *ngFor="let item of listOfUser">
+                <option [value]="item.EMPLOYEE_ID">{{item.EMPLOYEE_NAME}}</option>
+              </ng-container>
+            </select>
+            <span class="text-danger">{{ACCEPTANCE_TESTERMessage}}</span>
+          </div>
+        </div>
+        <div class="row justify-content-end">
+          <div class="">
+            <button type="submit" class="btn btn-primary" (click)="handleSubmitEdit()">Send</button>
+            <button type="submit" class="btn btn-primary ms-3" (click)="handleCancleEdit()">Cancle</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

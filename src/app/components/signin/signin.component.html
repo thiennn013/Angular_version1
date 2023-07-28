@@ -1,0 +1,37 @@
+<div class="d-flex flex-column container">
+  <div class="align-items-center justify-content-center g-0 min-vh-100 row">
+    <div class="py-8 py-xl-0 col-xxl-4 col-lg-6 col-md-8 col-12">
+      <div class="smooth-shadow-md card">
+        <div class="p-6 card-body">
+          <div class="mb-4">
+            <a href="/"><img src="/images/brand/logo/logo-primary.svg" alt="" class="mb-2" /></a>
+            <p class="mb-6">Please enter your user information.</p>
+          </div>
+            <div class="mb-3">
+              <label class="form-label" for="username">Username</label><input #usernameInp type="text" class="form-control" [(ngModel)]="username" (blur)="handleFocusOutUsername()" />
+              <span class="text-danger">{{usernameMessage}}</span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="username">Project</label>
+              <select class="form-select" [(ngModel)]="project">
+                <ng-container *ngFor="let item of listproject; let i = index">
+                  <option [value]="item.PROJECT_ID" [attr.selected]="i == 0?true:false">{{item.PROJECT_NAME+' '+ item.PROJECT_ROLE}}</option>
+                </ng-container>
+              </select>
+              <span class="text-danger">{{projectMessage}}</span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="password">Password</label><input type="password" class="form-control" [(ngModel)]="password" />
+              <span class="text-danger">{{passwordMessage}}</span>
+            </div>
+            <div>
+              <div class="d-grid">
+                <span class="text-danger">{{wrongMessage}}</span>
+                <button type="submit" class="btn btn-primary" (click)="handleBtnLoginClick()">Sign In</button>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

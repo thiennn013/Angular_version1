@@ -1,0 +1,115 @@
+<div class="row px-3">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Danh sách check list</h3>
+    </div>
+    <div class="card-content">
+      <div class="card-body">
+        <p class="text-end">※Phán đoán：○：không có vấn đề, ×：có vấn đề,-：không cần đối ứng</p>
+        <div #myTable class="table-responsive table-bordered" style="max-height: 400px;">
+          <table class="table table-lg">
+            <thead>
+              <tr>
+                <th class="text-nowrap align-middle text-center" rowspan="2">Frequency</th>
+                <th class="text-nowrap align-middle text-center " rowspan="2">Class</th>
+                <th class="align-middle text-center" rowspan="2">Check Item</th>
+                <th *ngIf="projectRole == 'ROLE_PL'" style="width: 50px;" rowspan="2"></th>
+                <ng-container *ngFor="let date of dateHeader">
+                  <th *ngIf="projectRole == 'ROLE_PL'; else dateElse" class="text-nowrap align-middle text-center" style="min-width: 300px;" rowspan="1" colspan="3">{{date | slice:0:10}}
+                  </th>
+                  <ng-template #dateElse>
+                    <th class="text-nowrap align-middle text-center" style="min-width: 300px;" rowspan="1" colspan="2">{{date | slice:0:10}}
+                    </th>
+                  </ng-template>
+                </ng-container>
+               
+              </tr>
+              <tr>
+                <ng-container *ngFor="let date of dateHeader">
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1">Judgment</th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1">Note</th>
+                  <th *ngIf="projectRole == 'ROLE_PL'" style="width: 50px;"></th>
+                </ng-container>
+              </tr>
+            </thead>
+            <tbody *ngIf="tableData">
+              <tr *ngFor="let row of tableData">
+                 <td class="head text-bold-500 text-nowrap head">{{row.FREQUENCY}}</td>
+                <td class="text-bold-500 text-nowrap">{{row.CLASSIFICATION}}</td>
+                <td class="text-wrap">{{row.CHECK_ITEM}}</td>
+                <td *ngIf="projectRole == 'ROLE_PL'"><button type="button" class="mr-2 float-end" (click)="handleEditRow(row)">
+                  <i class="bi bi-pencil-square"></i></button></td>
+                  <ng-container *ngFor="let judgement of row.JUDGEMENT; let i = index">
+                    <td *ngIf="judgement.JUDGEMENT == 1" class="text-bold-500 text-center" style="width: 30px;">○</td>
+                    <td *ngIf="judgement.JUDGEMENT == 2" class="text-bold-500 text-center" style="width: 30px;">×</td>
+                    <td *ngIf="judgement.JUDGEMENT == 3" class="text-bold-500 text-center" style="width: 30px;">-</td>
+                    <td *ngIf="judgement.JUDGEMENT == null" class="text-bold-500 text-center" style="width: 30px;"></td>
+                    <td class="text-bold-500 text-wrap">{{judgement.NOTE}}{{scrollTableToRight()}}</td>
+                    <td *ngIf="projectRole == 'ROLE_PL'">
+                      <button type="button" class="mr-2 float-end" (click)="handleEdit(row, judgement, dateHeader[i])">
+                        <i class="bi bi-pencil-square"></i></button>
+                    </td>
+                  </ng-container>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div  *ngIf="projectRole == 'ROLE_PL'" class="card">
+      <div class="card-header">
+        <h3 class="card-title">Add new check item</h3>
+      </div>
+      <div class="card-body row">
+        <ng-container *ngIf="isEditItem">
+          <div class="col-md-4">
+            <div class="row mb-3">
+              <label class="col-md-5 col-form-label">Frequency</label>
+              <div class="col-md-7">
+                <select type="text" class="form-select" [(ngModel)]="FREQUENCY">
+                  <option value = '' selected>Chọn....</option>
+                  <option value = "1 tuần 1 lần">1 tuần 1 lần</option>
+                  <option value = "1 tháng 1 lần">1 tháng 1 lần</option>
+                </select>
+                <span class="text-danger">{{FREQUENCYMessage}}</span>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-md-5 col-form-label">Classification</label>
+              <div class="col-md-7">
+                <select type="text" class="form-select" [(ngModel)]="CLASSIFICATION">
+                  <option  value = ''  selected>Chọn</option>
+                  <option value = "Quản lý">Quản lý</option>
+                  <option value = "Thiết kế">Thiết kế</option>
+                  <option value = "Code">Code</option>
+                  <option value = "UT test">UT test</option>
+                  <option value = "Test tích hợp">Test tích hợp</option>
+                  <option value = "Thời gian làm việc">Thời gian làm việc</option>
+                  <option value = "Khác">Khác</option>
+                  <option value = "Nhìn lại">Nhìn lại</option>
+                </select>
+                <span class="text-danger">{{CLASSIFICATIONMessage}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="row col-md-8 mb-3">
+            <label class="ps-3 col-md-3 col-form-label" for="basic-default-message">Check item name</label>
+            <div class="col-md-9">
+              <textarea id="basic-default-message" class="form-control" [(ngModel)]="CHECK_ITEM"></textarea>
+              <span class="text-danger">{{CHECK_ITEMMessage}}</span>
+            </div>
+          </div>
+          <div class="row justify-content-end">
+            <div class="col-md-12">
+              <button type="submit" class="btn btn-primary" (click)="addNewItemCheck(false)">Send</button>
+              <button type="submit" class="btn btn-primary ms-3" (click)="cancleAddNewItemCheck()">Cancle</button>
+            </div>
+          </div>
+        </ng-container>
+        <div class="px-3">
+          <button *ngIf="!isEditItem" type="submit" class="btn btn-primary float-end" (click)="addNewItemCheck(true)">Add new item Check</button>
+        </div>
+    </div>
+  </div>
+</div>

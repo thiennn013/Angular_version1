@@ -1,0 +1,137 @@
+
+<form style="font-size: larger; margin: 20px;" (ngSubmit)="loadTB()">
+
+    <label for="selectOption"> Chọn project  :  </label>
+  
+      <select style="margin-left: 20px;" id="selectOption" name="option" [(ngModel)]="selectedOption">
+        <option  *ngFor="let item of listproject"  [value]="item.prjID" > {{item.Name}} </option>
+      </select>
+    <button style="margin-left: 20px;" type="submit" class="buttonn">Load</button>
+  </form>
+  
+  
+  <div *ngIf="showTable">
+  <ul> Các bộ phận tham gia trong project :
+  <li  *ngFor="let item of listroleinPr" > {{item.rolaMasterName}} </li>
+  </ul>
+  <label style="float: right; font-size: large; margin: 20px;">※Phán đoán：○：không có vấn đề, ×：có vấn đề,-：không cần đối ứng</label>
+  <div class="tbnd">
+    <table>
+      <thead>
+        <tr>
+          <th class="col-1" rowspan="2" style="width: 30px">Tần suất</th>
+          <th class="col-1" rowspan="2" style="width: 30px">Phân Loại</th>
+          <th class="col-1" rowspan="2" style="width: 350px">Mục Check</th>
+          <ng-container *ngFor="let item of fornote">
+          <th class="col-2" colspan="2" style="width: 150px"> {{item.ngay}}
+          <button class="bt1" (click)="subcheck(item.ngay)">-</button>
+            </th>
+        </ng-container>
+          <button (click)="addcheck()">Add Note</button>
+  
+        </tr>
+        <tr>
+  
+          <ng-container *ngFor="let item of fornote">
+  
+            <th class="col-2" style="width: 75px">Phán đoán</th>
+            <th class="col-2" style="width: 75px">Ghi chú</th>
+          </ng-container>
+  
+        </tr>
+      </thead>
+      <tbody>
+  
+  
+        <tr *ngFor="let item of noidung; let ii = index">
+  
+  
+          <td  class="col-3" *ngIf="showTS(ii)" [attr.rowspan]="hienthi2[ii]">{{ item.tansuat }}</td>
+          <td  class="col-4" *ngIf="showTS(ii)" [attr.rowspan]="hienthi2[ii]">{{ item.Phanloai }}</td>
+          <td  class="col-4"><input type="text" [(ngModel)]="item.muccheck" (change)="onInputChangecheck(item.muccheck, item.checkID)">
+            <button style="float: right;" (click)="Xoacheck(item)">X</button>
+          </td >
+  
+          <ng-container *ngFor="let i of item.note">
+  
+          <!-- <td>{{ i.phandoan }}</td> -->
+  
+          <td class="col-5">
+              <select [(ngModel)]="i.phandoan" (change)="onSelect(i)">
+                <option                                                       value="〇">○</option>
+                <option style="background-color: red;"                      value="x">X</option>
+                <option style="background-color: rgb(231, 135, 9);"         value="-">-</option>
+              </select>
+  
+          </td>
+  
+          <td class="col-4"><input type="text" [(ngModel)]="i.noidung" (change)="onInputChange(i)"></td>
+          </ng-container>
+  
+        </tr>
+  
+  
+  
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2"> <button  (click)="openForm()">Add Phân Loại</button></td>
+          <td colspan="1"> <button  (click)="openForm1()">Add check</button></td>
+        </tr>
+  
+      </tfoot>
+    </table>
+  
+  </div>
+  
+  
+  </div>
+  
+  
+  <div *ngIf="showForm1">
+    <div class="form-overlay"></div>
+    <div class="form-container">
+      <h2>Thêm Check mới</h2>
+      <form>
+  
+        <label for="Role">Phân Loại</label>
+        <select  id="selectRole" name="Role" [(ngModel)]="selectedRoleID">
+          <option  *ngFor="let item of listroleinPr"  [value]="item.roleID" > {{item.rolaMasterName}} </option>
+        </select>
+  
+        <label for="Check">Check</label>
+        <input style="background-color:  rgba(131, 110, 110, 0.2);" type="text" id="Check" name="Check"  autocomplete="off" [(ngModel)]="addCheck">
+  
+        <button class="left" (click)="submitForm1()">Thêm</button>
+        <button class="right" (click)="closeForm1()">Bỏ </button>
+      </form>
+    </div>
+  </div>
+  
+  
+  
+  <div *ngIf="showForm">
+    <div class="form-overlay"></div>
+    <div class="form-container">
+      <h2>Thêm Phân Loại mới</h2>
+      <form>
+        <label for="hoten">Tần suất</label>
+        <select style="width: 500px;" id="selectTanSuat" name="TanSuat" [(ngModel)]="selectedTanSuat">
+          <option  *ngFor="let item of listTanSuat"  [value]="item.tanSuatID" > {{item.noiDung}} </option>
+        </select>
+  
+        <label style="margin-top: 30px;" for="tenll">Phân Loại</label>
+        <select style="width: 500px; " id="selectRole" name="Role" [(ngModel)]="selectedRole">
+          <option  *ngFor="let item of listrole"  [value]="item.roleMasterID" > {{item.rolaMasterName}} </option>
+        </select>
+  
+        <div style="margin-top: 30px;">
+  
+        <button class="left" (click)="submitForm()">Thêm</button>
+        <button class="right" (click)="closeForm()">Bỏ </button>
+        </div>
+  
+      </form>
+    </div>
+  </div>
+  

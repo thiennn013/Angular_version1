@@ -1,0 +1,47 @@
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Edit</h3>
+    </div>
+    <div class="card-content">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-3 d-flex flex-column justify-content-between">
+                    <h6 class="text-uppercase fs-5 ls-2">Frequency </h6>
+                    <p class="mb-0">{{param.row.FREQUENCY}}</p>
+                </div>
+                <div class="col-3 d-flex flex-column justify-content-between">
+                    <h6 class="text-uppercase fs-5 ls-2">Classification </h6>
+                    <p class="mb-0">{{param.row.CLASSIFICATION}}</p>
+                </div>
+                <div class="col-6 d-flex flex-column justify-content-between">
+                    <h6 class="text-uppercase fs-5 ls-2">Check item </h6>
+                    <p class="mb-0">{{param.row.CHECK_ITEM}}</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="mb-3 col-sm-4 col-lg-3 d-flex flex-column justify-content-between">
+                    <label class=" col-form-label">Judgement</label>
+                        <select [(ngModel)]="this.param.judgement.JUDGEMENT" class="form-select" (change)="handleChangCheckBox()">
+                            <option value="1" selected>Không có vấn đề</option>
+                            <option value="2">Có vấn đề</option>
+                            <option value="3">Không cần đối ứng</option>
+                          </select>
+                          <span class="text-danger">{{JUDGEMENTMessage}}</span>
+                </div>
+                
+                <div class="mb-3 col-sm-8 col-lg-9 d-flex flex-column justify-content-between">
+                    <label class=" col-form-label">Note</label>
+                        <textarea type="text" class="form-control" [(ngModel)]="this.param.judgement.NOTE"></textarea>
+                </div>
+            
+                <div class="row justify-content-end">
+                    <div class="">
+                        <button type="submit" class="btn btn-primary" (click)="handleSubmitEdit()">Send</button>
+                        <button type="submit" class="btn btn-primary ms-3" (click)="handleCancleEdit()">Cancle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

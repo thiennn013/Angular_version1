@@ -1,0 +1,51 @@
+table,
+th,
+td {
+  border: 1px solid #ddd !important;
+}
+.table-responsive {
+  position: relative;
+  overflow: auto;
+  border: 1px solid black;
+  white-space: nowrap;
+}
+.sticky-col {
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: white;
+}
+
+.first-col {
+  width: 50px;
+  min-width: 50px;
+  max-width: 50px;
+  left: 0px;
+}
+
+.second-col {
+  width: 50px;
+  min-width: 50px;
+  max-width: 50px;
+  left: 50px;
+}
+
+.third-col {
+  width: 100px;
+  min-width: 100px;
+  max-width: 100px;
+  left: 100px;
+}
+
+.fourth-col {
+  width: 100px;
+  min-width: 100px;
+  max-width: 100px;
+  left: 200px;
+}
+
+.fifth-col {
+  width: 400px;
+  min-width: 400px;
+  max-width: 400px;
+  left: 300px;
+}

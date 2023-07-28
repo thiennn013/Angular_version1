@@ -1,0 +1,386 @@
+<div class="row px-3">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Danh sách mục xem</h3>
+    </div>
+    <div class="card-content">
+      <div class="card-body">
+        <div class="row overflow-scroll flex-nowrap">
+          <div style="width: 220px; padding-bottom: 10px">
+            <app-feature feartureName="Management" [HideShow]="listOfManagement.length > 0 ? 'Hide' : 'Show'" (clickButton)="handleShowFearture(this, GET_LIST_OF_MANAGEMENT, 'listOfManagement')"></app-feature>
+          </div>
+          <div style="width: 220px; padding-bottom: 10px">
+            <app-feature feartureName="Requirement definition" [HideShow]="listOfReqDefine.length > 0 ? 'Hide' : 'Show'" (clickButton)="handleShowFearture(this, GET_LIST_OF_REQ_DEFINE, 'listOfReqDefine')"></app-feature>
+          </div>
+          <div style="width: 220px; padding-bottom: 10px">
+            <app-feature feartureName="Basic Design" [HideShow]="listOfBasicDesign.length > 0 ? 'Hide' : 'Show'" (clickButton)="handleShowFearture(this, GET_LIST_OF_BASIC_DESIGN, 'listOfBasicDesign')"></app-feature>
+          </div>
+          <div style="width: 220px; padding-bottom: 10px">
+            <app-feature feartureName="Detail Design" [HideShow]="listOfDetailDesign.length > 0 ? 'Hide' : 'Show'" (clickButton)="handleShowFearture(this, GET_LIST_OF_DETAIL_DESIGN, 'listOfDetailDesign')"></app-feature>
+          </div>
+          <div style="width: 220px; padding-bottom: 10px">
+            <app-feature feartureName="Programming" [HideShow]="listOfImplementer.length > 0 ? 'Hide' : 'Show'" (clickButton)="handleShowFearture(this, GET_LIST_OF_IMPLEMENTATION, 'listOfImplementer')"></app-feature>
+          </div>
+          <div style="width: 220px; padding-bottom: 10px">
+            <app-feature feartureName="UT specification" [HideShow]="listOfUtSpec.length > 0 ? 'Hide' : 'Show'" (clickButton)="handleShowFearture(this, GET_LIST_OF_UT_SPEC, 'listOfUtSpec')"></app-feature>
+          </div>
+          <div style="width: 220px; padding-bottom: 10px">
+            <app-feature feartureName="Unit test" [HideShow]="listOfUt.length > 0 ? 'Hide' : 'Show'" (clickButton)="handleShowFearture(this, GET_LIST_OF_UT, 'listOfUt')"></app-feature>
+          </div>
+          <div style="width: 220px; padding-bottom: 10px">
+            <app-feature feartureName="Test specification" [HideShow]="listOfITSpec.length > 0 ? 'Hide' : 'Show'" (clickButton)="handleShowFearture(this, GET_LIST_OF_IT_SPEC, 'listOfITSpec')"></app-feature>
+          </div>
+          <div style="width: 220px; padding-bottom: 10px">
+            <app-feature feartureName="Integration test" [HideShow]="listOfIT.length > 0 ? 'Hide' : 'Show'" (clickButton)="handleShowFearture(this, GET_LIST_OF_IT, 'listOfIT')"></app-feature>
+          </div>
+          <div style="width: 220px; padding-bottom: 10px">
+            <app-feature feartureName="System test" [HideShow]="listOfST.length > 0 ? 'Hide' : 'Show'" (clickButton)="handleShowFearture(this, GET_LIST_OF_ST, 'listOfST')"></app-feature>
+          </div>
+          <div style="width: 220px; padding-bottom: 10px">
+            <app-feature feartureName="BRC Acceptance Test" [HideShow]="listOfBRCAcp.length > 0 ? 'Hide' : 'Show'" (clickButton)="handleShowFearture(this, GET_LIST_OF_BRC_ACP, 'listOfBRCAcp')"></app-feature>
+          </div>
+          <div style="width: 220px; padding-bottom: 10px">
+            <app-feature feartureName="Customer Acceptance Test" [HideShow]="listOfCusAcp.length > 0 ? 'Hide' : 'Show'" (clickButton)="handleShowFearture(this, GET_LIST_OF_CUS_ACP, 'listOfCusAcp')"></app-feature>
+          </div>
+          <div style="width: 220px; padding-bottom: 10px">
+            <app-feature feartureName="After Release" [HideShow]="listOfAfterRelease.length > 0 ? 'Hide' : 'Show'" (clickButton)="handleShowFearture(this, GET_LIST_OF_RELEASE, 'listOfAfterRelease')"></app-feature>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row px-3 mt-3">
+  <div class="card">
+    <div class="card-head1r">
+      <h3 class="card-title">Danh sách giá trị chỉ số chất lượng</h3>
+    </div>
+    <div class="card-content">
+      <div class="card-body">
+        <div #myTable class="table-responsive table-bordered" style="max-height: 400px">
+          <table class="table table-lg">
+            <thead>
+              <tr>
+                <th class="align-middle text-center" rowspan="2">No</th>
+                <th class="text-nowrap align-middle text-center" rowspan="2"> Classification </th>
+                <th class="text-nowrap align-middle text-center" rowspan="2"> Work content </th>
+                <th class="text-nowrap align-middle text-center" rowspan="2"> Difficulty </th>
+                <th *ngIf="listOfReqDefine.length > 0" class="text-nowrap align-middle text-center" rowspan="2"> Requirement Define </th>
+                <th *ngIf="listOfBasicDesign.length > 0" class="text-nowrap align-middle text-center" rowspan="2"> Basic Design </th>
+                <th *ngIf="listOfDetailDesign.length > 0" class="text-nowrap align-middle text-center" rowspan="2"> Detail Design </th>
+                <th *ngIf="listOfImplementer.length > 0" class="text-nowrap align-middle text-center" rowspan="2"> Programmer </th>
+                <th *ngIf="listOfUtSpec.length > 0 || listOfUt.length > 0" class="text-nowrap align-middle text-center" rowspan="2"> Unit Tester </th>
+                <th *ngIf="listOfITSpec.length > 0 || listOfIT.length > 0" class="text-nowrap align-middle text-center" rowspan="2"> Integration Tester </th>
+                <th *ngIf="listOfBRCAcp.length > 0" class="text-nowrap align-middle text-center" rowspan="2"> JP Acceptance Tester </th>
+                <th *ngIf="projectRole == 'ROLE_PL'" rowspan="2"></th>
+                <ng-container *ngIf="projectRole == 'ROLE_PL'; else elseBlock">
+                  <th *ngIf="listOfManagement.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="3"> Management </th>
+                  <th *ngIf="listOfReqDefine.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="7"> Requirement definition </th>
+                  <th *ngIf="listOfBasicDesign.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="7"> Basic Design </th>
+                  <th *ngIf="listOfDetailDesign.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="7"> Detail Design </th>
+                  <th *ngIf="listOfImplementer.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="6"> Programming/Test code </th>
+                  <th *ngIf="listOfUtSpec.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="6"> UT specification </th>
+                  <th *ngIf="listOfUt.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="5"> Unit test </th>
+                  <th *ngIf="listOfITSpec.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="6"> IT specification </th>
+                  <th *ngIf="listOfIT.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="5"> Integration test </th>
+                  <th *ngIf="listOfST.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="5"> System test </th>
+                  <th *ngIf="listOfBRCAcp.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="4"> BRC Acceptance Test </th>
+                  <th *ngIf="listOfCusAcp.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="3"> Customer Acceptance Test </th>
+                  <th *ngIf="listOfAfterRelease.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="2"> After Release </th>
+                </ng-container>
+                <ng-template #elseBlock>
+                  <th *ngIf="listOfManagement.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="2"> Management </th>
+                  <th *ngIf="listOfReqDefine.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="6"> Requirement definition </th>
+                  <th *ngIf="listOfBasicDesign.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="6"> Basic Design </th>
+                  <th *ngIf="listOfDetailDesign.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="6"> Detail Design </th>
+                  <th *ngIf="listOfImplementer.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="5"> Programming/Test code </th>
+                  <th *ngIf="listOfUtSpec.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="5"> UT specification </th>
+                  <th *ngIf="listOfUt.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="4"> Unit test </th>
+                  <th *ngIf="listOfITSpec.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="5"> IT specification </th>
+                  <th *ngIf="listOfIT.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="4"> Integration test </th>
+                  <th *ngIf="listOfST.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="4"> System test </th>
+                  <th *ngIf="listOfBRCAcp.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="3"> BRC Acceptance Test </th>
+                  <th *ngIf="listOfCusAcp.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="2"> Customer Acceptance Test </th>
+                  <th *ngIf="listOfAfterRelease.length > 0" class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> After Release </th>
+                </ng-template>
+              </tr>
+              <tr>
+                <ng-container *ngIf="listOfManagement.length > 0">
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Man-hours </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Man-hours for aggregation </th>
+                  <th *ngIf="projectRole == 'ROLE_PL'" class="text-nowrap align-middle text-center" rowspan="1" colspan="1"></th>
+                </ng-container>
+                <ng-container *ngIf="listOfReqDefine.length > 0">
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Man-hours </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Man-hours for translation </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Man-hours for review/fix </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of pages </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of comment/reviews </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of QAs </th>
+                  <th *ngIf="projectRole == 'ROLE_PL'" class="text-nowrap align-middle text-center" rowspan="1" colspan="1"></th>
+                </ng-container>
+                <ng-container *ngIf="listOfBasicDesign.length > 0">
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Man-hours </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Man-hours for translation </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Man-hours for review/fix </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of pages </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of comment/reviews </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of QAs </th>
+                  <th *ngIf="projectRole == 'ROLE_PL'" class="text-nowrap align-middle text-center" rowspan="1" colspan="1"></th>
+                </ng-container>
+                <ng-container *ngIf="listOfDetailDesign.length > 0">
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Man-hours </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Man-hours for translation </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Man-hours for review/fix </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of pages </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of comment/reviews </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of QAs </th>
+                  <th *ngIf="projectRole == 'ROLE_PL'" class="text-nowrap align-middle text-center" rowspan="1" colspan="1"></th>
+                </ng-container>
+                <ng-container *ngIf="listOfImplementer.length > 0">
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Man-hours for code </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Man-hours for review/fix </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of steps </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of comment/reviews </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of QAs </th>
+                  <th *ngIf="projectRole == 'ROLE_PL'" class="text-nowrap align-middle text-center" rowspan="1" colspan="1"></th>
+                </ng-container>
+                <ng-container *ngIf="listOfUtSpec.length > 0">
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Man-hours </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Man-hours for translation </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Man-hours for review/fix </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of testcases </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of comment/reviews </th>
+                  <th *ngIf="projectRole == 'ROLE_PL'" class="text-nowrap align-middle text-center" rowspan="1" colspan="1"></th>
+                </ng-container>
+                <ng-container *ngIf="listOfUt.length > 0">
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Man-hours </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Point to notes </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of testcases </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of bugs </th>
+                  <th *ngIf="projectRole == 'ROLE_PL'" class="text-nowrap align-middle text-center" rowspan="1" colspan="1"></th>
+                </ng-container>
+                <ng-container *ngIf="listOfITSpec.length > 0">
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Man-hours </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Man-hours for translation </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Man-hours for review/fix </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of testcases </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of comment/reviews </th>
+                  <th *ngIf="projectRole == 'ROLE_PL'" class="text-nowrap align-middle text-center" rowspan="1" colspan="1"></th>
+                </ng-container>
+                <ng-container *ngIf="listOfIT.length > 0">
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Man-hours </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Point to notes </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of testcases </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of bugs </th>
+                  <th *ngIf="projectRole == 'ROLE_PL'" class="text-nowrap align-middle text-center" rowspan="1" colspan="1"></th>
+                </ng-container>
+                <ng-container *ngIf="listOfST.length > 0">
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Man-hours </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Point to notes </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of testcases </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of bugs </th>
+                  <th *ngIf="projectRole == 'ROLE_PL'" class="text-nowrap align-middle text-center" rowspan="1" colspan="1"></th>
+                </ng-container>
+                <ng-container *ngIf="listOfBRCAcp.length > 0">
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Total Man-hours </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Man-hours Acceptance Test </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of BRC comment </th>
+                  <th *ngIf="projectRole == 'ROLE_PL'" class="text-nowrap align-middle text-center" rowspan="1" colspan="1"></th>
+                </ng-container>
+                <ng-container *ngIf="listOfCusAcp.length > 0">
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Total Man-hours </th>
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of Customer comment </th>
+                  <th *ngIf="projectRole == 'ROLE_PL'" class="text-nowrap align-middle text-center" rowspan="1" colspan="1"></th>
+                </ng-container>
+                <ng-container *ngIf="listOfAfterRelease.length > 0">
+                  <th class="text-nowrap align-middle text-center" rowspan="1" colspan="1"> Number of comment </th>
+                  <th *ngIf="projectRole == 'ROLE_PL'" class="text-nowrap align-middle text-center" rowspan="1" colspan="1"></th>
+                </ng-container>
+              </tr>
+            </thead>
+            <tbody *ngIf="tableData">
+              <tr *ngFor="let row of tableData">
+                <td class="text-bold-500 text-nowrap">{{ row.NO }}</td>
+                <td class="text-bold-500 text-nowrap"> {{ row.CLASSIFICATION }} </td>
+                <td class="text-bold-500 text-nowrap"> {{ row.WORK_CONTENT }} </td>
+                <td class="text-bold-500 text-nowrap">{{ row.DIFFICULTY }}</td>
+                <td *ngIf="listOfReqDefine.length > 0" class="text-bold-500 text-nowrap"> {{ row.REQUIRE_DEFINE }} </td>
+                <td *ngIf="listOfBasicDesign.length > 0" class="text-bold-500 text-nowrap"> {{ row.BASIC_DESIGN }} </td>
+                <td *ngIf="listOfDetailDesign.length > 0" class="text-bold-500 text-nowrap"> {{ row.DETAIL_DESIGN }} </td>
+                <td *ngIf="listOfImplementer.length > 0" class="text-bold-500 text-nowrap"> {{ row.PROGRAMMER }} </td>
+                <td *ngIf="listOfUtSpec.length > 0 || listOfUt.length > 0" class="text-bold-500 text-nowrap"> {{ row.UNIT_TESTER }} </td>
+                <td *ngIf="listOfITSpec.length > 0 || listOfIT.length > 0" class="text-bold-500 text-nowrap"> {{ row.INTEGRATION_TESTER }} </td>
+                <td *ngIf="listOfBRCAcp.length > 0" class="text-bold-500 text-nowrap"> {{ row.ACCEPTANCE_TESTER }} </td>
+                <td *ngIf="projectRole == 'ROLE_PL'">
+                  <button type="button" class="mr-2 float-end" (click)="handleEditRow(row,'EDIT')">
+                    <i class="bi bi-pencil-square"></i></button>
+                </td>
+                <ng-container *ngFor="let rowManagement of listOfManagement">
+                  <ng-container *ngIf="rowManagement.ID == row.ID">
+                    <td class="text-bold-500 text-nowrap"> {{ rowManagement.MAN_HOURS.toFixed(2) + "h" }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowManagement.MAN_HOURS_FOR_AGGREGATION.toFixed(2) + "h" }} </td>
+                    <td *ngIf="projectRole == 'ROLE_PL'">
+                      <button type="button" class="mr-2 float-end" (click)="handleEdit(this,'listOfManagement', EDIT_MANAGEMENT, row, rowManagement)">
+                        <i class="bi bi-pencil-square"></i></button>
+                    </td>
+                  </ng-container>
+                </ng-container>
+                <ng-container *ngFor="let rowReqDefine of listOfReqDefine">
+                  <ng-container *ngIf="rowReqDefine.ID == row.ID">
+                    <td class="text-bold-500 text-nowrap"> {{ rowReqDefine.MAN_HOURS.toFixed(2) + "h" }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowReqDefine.MAN_HOURS_FOR_TRANSLATION.toFixed(2) + "h" }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowReqDefine.MAN_HOURS_FOR_REVIEW.toFixed(2) + "h" }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowReqDefine.NUMBER_OF_PAGE }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowReqDefine.NUMBER_OF_COMMENT }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowReqDefine.NUMBER_OF_QA }} </td>
+                    <td *ngIf="projectRole == 'ROLE_PL'">
+                      <button type="button" class="mr-2 float-end" (click)="handleEdit(this, 'listOfReqDefine',EDIT_REQ_DEFINE, row, rowReqDefine)">
+                        <i class="bi bi-pencil-square"></i></button>
+                    </td>
+                  </ng-container>
+                </ng-container>
+                <ng-container *ngFor="let rowBasicDesign of listOfBasicDesign">
+                  <ng-container *ngIf="rowBasicDesign.ID == row.ID">
+                    <td class="text-bold-500 text-nowrap"> {{ rowBasicDesign.MAN_HOURS.toFixed(2) + "h" }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowBasicDesign.MAN_HOURS_FOR_TRANSLATION.toFixed(2) + "h" }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowBasicDesign.MAN_HOURS_FOR_REVIEW.toFixed(2) + "h" }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowBasicDesign.NUMBER_OF_PAGE }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowBasicDesign.NUMBER_OF_COMMENT }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowBasicDesign.NUMBER_OF_QA }} </td>
+                    <td *ngIf="projectRole == 'ROLE_PL'">
+                      <button type="button" class="mr-2 float-end" (click)="handleEdit(this, 'listOfBasicDesign',EDIT_BASIC_DESIGN, row,rowBasicDesign)">
+                        <i class="bi bi-pencil-square"></i></button>
+                    </td>
+                  </ng-container>
+                </ng-container>
+                <ng-container *ngFor="let rowDetailDesign of listOfDetailDesign">
+                  <ng-container *ngIf="rowDetailDesign.ID == row.ID">
+                    <td class="text-bold-500 text-nowrap"> {{ rowDetailDesign.MAN_HOURS.toFixed(2) + "h" }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowDetailDesign.MAN_HOURS_FOR_TRANSLATION.toFixed(2) + "h" }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowDetailDesign.MAN_HOURS_FOR_REVIEW.toFixed(2) + "h" }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowDetailDesign.NUMBER_OF_PAGE }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowDetailDesign.NUMBER_OF_COMMENT }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowDetailDesign.NUMBER_OF_QA }} </td>
+                    <td *ngIf="projectRole == 'ROLE_PL'">
+                      <button type="button" class="mr-2 float-end" (click)="handleEdit(this, 'listOfDetailDesign',EDIT_DETAIL_DESIGN, row,rowDetailDesign)">
+                        <i class="bi bi-pencil-square"></i></button>
+                    </td>
+                  </ng-container>
+                </ng-container>
+                <ng-container *ngFor="let rowImplementer of listOfImplementer">
+                  <ng-container *ngIf="rowImplementer.ID == row.ID">
+                    <td class="text-bold-500 text-nowrap"> {{ rowImplementer.MAN_HOURS.toFixed(2) + "h" }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowImplementer.MAN_HOURS_FOR_REVIEW.toFixed(2) + "h" }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowImplementer.NUMBER_OF_STEP }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowImplementer.NUMBER_OF_COMMENT }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowImplementer.NUMBER_OF_QA }} </td>
+                    <td *ngIf="projectRole == 'ROLE_PL'">
+                      <button type="button" class="mr-2 float-end" (click)="handleEdit(this, 'listOfImplementer',EDIT_IMPLEMENTATION, row, rowImplementer)">
+                        <i class="bi bi-pencil-square"></i></button>
+                    </td>
+                  </ng-container>
+                </ng-container>
+                <ng-container *ngFor="let rowUtSpec of listOfUtSpec">
+                  <ng-container *ngIf="rowUtSpec.ID == row.ID">
+                    <td class="text-bold-500 text-nowrap"> {{ rowUtSpec.MAN_HOURS.toFixed(2) + "h" }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowUtSpec.MAN_HOURS_FOR_TRANSLATION.toFixed(2) + "h" }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowUtSpec.MAN_HOURS_FOR_REVIEW.toFixed(2) + "h" }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowUtSpec.NUMBER_OF_TESTCASE }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowUtSpec.NUMBER_OF_COMMENT }} </td>
+                    <td *ngIf="projectRole == 'ROLE_PL'">
+                      <button type="button" class="mr-2 float-end" (click)="handleEdit(this, 'listOfUtSpec',EDIT_UT_SPEC, row, rowUtSpec)">
+                        <i class="bi bi-pencil-square"></i> </button>
+                    </td>
+                  </ng-container>
+                </ng-container>
+                <ng-container *ngFor="let rowUt of listOfUt">
+                  <ng-container *ngIf="rowUt.ID == row.ID">
+                    <td class="text-bold-500 text-nowrap"> {{ rowUt.MAN_HOURS.toFixed(2) + "h" }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowUt.POINT_TO_NOTE }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowUt.NUMBER_OF_TESTCASE }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowUt.NUMBER_OF_BUG }} </td>
+                    <td *ngIf="projectRole == 'ROLE_PL'">
+                      <button type="button" class="mr-2 float-end" (click)="handleEdit(this, 'listOfUt',EDIT_UT, row, rowUt)">
+                        <i class="bi bi-pencil-square"></i></button>
+                    </td>
+                  </ng-container>
+                </ng-container>
+                <ng-container *ngFor="let rowITSpec of listOfITSpec">
+                  <ng-container *ngIf="rowITSpec.ID == row.ID">
+                    <td class="text-bold-500 text-nowrap"> {{ rowITSpec.MAN_HOURS.toFixed(2) + "h" }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowITSpec.MAN_HOURS_FOR_TRANSLATION.toFixed(2) + "h" }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowITSpec.MAN_HOURS_FOR_REVIEW.toFixed(2) + "h" }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowITSpec.NUMBER_OF_TESTCASE }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowITSpec.NUMBER_OF_COMMENT }} </td>
+                    <td *ngIf="projectRole == 'ROLE_PL'">
+                      <button type="button" class="mr-2 float-end" (click)="handleEdit(this, 'listOfITSpec',EDIT_IT_SPEC, row, rowITSpec)">
+                        <i class="bi bi-pencil-square"></i></button>
+                    </td>
+                  </ng-container>
+                </ng-container>
+                <ng-container *ngFor="let rowIT of listOfIT">
+                  <ng-container *ngIf="rowIT.ID == row.ID">
+                    <td class="text-bold-500 text-nowrap"> {{ rowIT.MAN_HOURS.toFixed(2) + "h" }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowIT.POINT_TO_NOTE }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowIT.NUMBER_OF_TESTCASE }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowIT.NUMBER_OF_BUG }} </td>
+                    <td *ngIf="projectRole == 'ROLE_PL'">
+                      <button type="button" class="mr-2 float-end" (click)="handleEdit(this, 'listOfIT',EDIT_IT, row, rowIT)">
+                        <i class="bi bi-pencil-square"></i></button>
+                    </td>
+                  </ng-container>
+                </ng-container>
+                <ng-container *ngFor="let rowST of listOfST">
+                  <ng-container *ngIf="rowST.ID == row.ID">
+                    <td class="text-bold-500 text-nowrap"> {{ rowST.MAN_HOURS.toFixed(2) + "h" }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowST.POINT_TO_NOTE }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowST.NUMBER_OF_TESTCASE }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowST.NUMBER_OF_BUG }} </td>
+                    <td *ngIf="projectRole == 'ROLE_PL'">
+                      <button type="button" class="mr-2 float-end" (click)="handleEdit(this, 'listOfST',EDIT_ST, row, rowST)">
+                        <i class="bi bi-pencil-square"></i></button>
+                    </td>
+                  </ng-container>
+                </ng-container>
+                <ng-container *ngFor="let rowBRCAcp of listOfBRCAcp">
+                  <ng-container *ngIf="rowBRCAcp.ID == row.ID">
+                    <td class="text-bold-500 text-nowrap"> {{ rowBRCAcp.TOTAL_MAN_HOURS.toFixed(2) + "h" }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowBRCAcp.MAN_HOURS.toFixed(2) + "h" }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowBRCAcp.NUMBER_OF_COMMENT }} </td>
+                    <td *ngIf="projectRole == 'ROLE_PL'">
+                      <button type="button" class="mr-2 float-end" (click)="handleEdit(this, 'listOfBRCAcp',EDIT_BRC_ACP, row, rowBRCAcp)">
+                        <i class="bi bi-pencil-square"></i></button>
+                    </td>
+                  </ng-container>
+                </ng-container>
+                <ng-container *ngFor="let rowCusAcp of listOfCusAcp">
+                  <ng-container *ngIf="rowCusAcp.ID == row.ID">
+                    <td class="text-bold-500 text-nowrap"> {{ rowCusAcp.TOTAL_MAN_HOURS.toFixed(2) + "h" }} </td>
+                    <td class="text-bold-500 text-nowrap"> {{ rowCusAcp.NUMBER_OF_COMMENT }} </td>
+                    <td *ngIf="projectRole == 'ROLE_PL'">
+                      <button type="button" class="mr-2 float-end" (click)="handleEdit(this, 'listOfCusAcp',EDIT_CUS_ACP, row, rowCusAcp)">
+                        <i class="bi bi-pencil-square"></i></button>
+                    </td>
+                  </ng-container>
+                </ng-container>
+                <ng-container *ngFor="let rowAfterRelease of listOfAfterRelease">
+                  <ng-container *ngIf="rowAfterRelease.ID == row.ID">
+                    <td class="text-bold-500 text-nowrap"> {{ rowAfterRelease.NUMBER_OF_COMMENT }} </td>
+                    <td *ngIf="projectRole == 'ROLE_PL'">
+                      <button type="button" class="mr-2 float-end" (click)="handleEdit(this, 'listOfAfterRelease',EDIT_RELEASE, row, rowAfterRelease)
+                        ">
+                        <i class="bi bi-pencil-square"></i></button>
+                    </td>
+                  </ng-container>
+                </ng-container> {{ scrollTableToRight() }}
+              </tr>
+              <tr>
+            </tbody>
+          </table>
+          <button *ngIf="projectRole == 'ROLE_PL'" (click)="handleEditRow(project_id, 'ADD')" type="button" class="btn btn-primary">Add new line</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

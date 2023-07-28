@@ -1,0 +1,32 @@
+<div class="row px-3">
+    <div class="card">
+        <div class="card-head1r">
+            <h3 class="card-title">Quality index value</h3>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <div #myTable class="table-responsive table-bordered" style="max-height: 400px">
+                    <table class="table table-lg">
+                        <thead>
+                            <tr>
+                                <th class="text-center"> No</th>
+                                <th class="text-center"> Phase</th>
+                                <th class="text-center"> Indicator</th>
+                                <th class="text-center"> Index value (average value)</th>
+                                <th class="text-center"> Index value (acceptable range)</th>
+                        </thead>
+                        <tbody *ngIf="tableData">
+                            <tr *ngFor="let row of tableData">
+                                <td class="text-bold-500 text-nowrap">{{ row.NO }}</td>
+                                <td class="align-middle" *ngIf="row.PHASE" [rowSpan]="row.ROW_SPAN">{{row.PHASE}}</td>
+                                <td>{{row.INDICATOR}}</td>
+                                <td class="text-center">{{row.E}}</td>
+                                <td class="text-center">{{row.F+"&nbsp;&nbsp;&nbsp;&nbsp;~&nbsp;&nbsp;&nbsp;&nbsp;"+row.H}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

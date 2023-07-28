@@ -1,0 +1,110 @@
+<div class="row g-4">
+    <div class="col-6 col-xl-3">
+        <div class="rounded d-flex align-items-center justify-content-between p-4">
+            <i class="fa fa-chart-line fa-3x text-primary"></i>
+            <div class="ms-3">
+                <p class="mb-2 text-end" style="height: 40px;">Division</p>
+                <h6 class="mb-0 text-end">{{project.DIVISION}}</h6>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-xl-3">
+        <div class="rounded d-flex align-items-center justify-content-between p-4">
+            <i class="fa fa-chart-bar fa-3x text-primary"></i>
+            <div class="ms-3">
+                <p class="mb-2 text-end" style="height: 40px;">Project Name</p>
+                <h6 class="mb-0 text-end">{{project.PROJECT_NAME}}</h6>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-xl-3">
+        <div class="rounded d-flex align-items-center justify-content-between p-4">
+            <i class="fa fa-chart-area fa-3x text-primary"></i>
+            <div class="ms-3">
+                <p class="mb-2 text-end" style="height: 40px;">Total Members</p>
+                <h6 class="mb-0 text-end">{{project.VN_MEMBER + project.JP_MEMBER}}</h6>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-xl-3">
+        <div class="rounded d-flex align-items-center justify-content-between p-4">
+            <i class="fa fa-chart-pie fa-3x text-primary"></i>
+            <div class="ms-3">
+                <p class="mb-2 text-end" style="height: 40px;">MY ROLE</p>
+                <h6 class="mb-0 text-end">{{project.PROJECT_ROLE}}</h6>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-12 col-md-12 mt-5">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Manager</h3>
+      </div>
+      <div class="card-content">
+        <div class="card-body row">
+
+
+
+            <div class="col-md-6 col-lg-4 mb-3">
+                <div class="card text-center">
+                  <div class="card-header">
+                    Featured
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Project Checklist</h5>
+                    <!-- <p class="card-text">With supporting text below as a natural.</p> -->
+                    <a (click)="goTo('checklist')" class="btn btn-primary">Go</a>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-md-6 col-lg-4 mb-3">
+                <div class="card text-center">
+                  <div class="card-header">
+                    Featured
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Tổng hợp các chỉ tiêu chất lượng</h5>
+                    <!-- <p class="card-text">With supporting text below as a natural.</p> -->
+                    <a (click)="goTo('quality-indicators')" class="btn btn-primary">Go</a>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-md-6 col-lg-4 mb-3">
+                <div class="card text-center">
+                  <div class="card-header">
+                    Featured
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Giá trị chỉ số chất lượng</h5>
+                    <!-- <p class="card-text">With supporting text below as a natural.</p> -->
+                    <a (click)="goTo('quality-index-value')" class="btn btn-primary">Go</a>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-md-6 col-lg-4 mb-3">
+                <div class="card text-center">
+                  <div class="card-header">
+                    Featured
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">checklist2</h5>
+                    <!-- <p class="card-text">With supporting text below as a natural.</p> -->
+                    <a (click)="goTo('checklist2')" class="btn btn-primary">Go</a>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>

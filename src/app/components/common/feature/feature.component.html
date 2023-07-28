@@ -1,0 +1,10 @@
+
+    <div class="card text-center">
+      <div class="card-header">
+        Featured
+      </div>
+      <div class="card-body">
+        <h5 class="card-title" style="min-height: 70px;">{{feartureName}}</h5>
+        <a (click)="handleShow()" class="btn " [ngClass]="HideShow == 'Show'?'btn-primary':'btn-dark'">{{HideShow}}</a>
+      </div>
+    </div>

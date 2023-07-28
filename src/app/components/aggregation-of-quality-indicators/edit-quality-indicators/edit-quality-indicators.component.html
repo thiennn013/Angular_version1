@@ -1,0 +1,119 @@
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Edit</h3>
+    </div>
+    <div class="card-content">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-3 d-flex flex-column justify-content-between">
+                    <h6 class="text-uppercase fs-5 ls-2">Classification </h6>
+                    <p class="mb-0">{{param.row.CLASSIFICATION}}</p>
+                </div>
+                <div class="col-3 d-flex flex-column justify-content-between">
+                    <h6 class="text-uppercase fs-5 ls-2">Work content </h6>
+                    <p class="mb-0">{{param.row.WORK_CONTENT}}</p>
+                </div>
+                <div class="col-3 d-flex flex-column justify-content-between">
+                    <h6 class="text-uppercase fs-5 ls-2">Difficulty </h6>
+                    <p class="mb-0">{{param.row.DIFFICULTY}}</p>
+                </div>
+                <div class="col-3 d-flex flex-column justify-content-between">
+                    <h6 class="text-uppercase fs-5 ls-2">{{param.type}}</h6>
+                    <p class="mb-0">{{typeInfo}}</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div *ngIf="param.data.hasOwnProperty('TOTAL_MAN_HOURS')" class="mb-3 col-sm-4 col-lg-3 d-flex flex-column justify-content-between">
+                    <label class=" col-form-label">Total Man-hours</label>
+                    <div class="">
+                        <input disabled="true" type="number" class="form-control" [(ngModel)]="param.data.TOTAL_MAN_HOURS">
+                    </div>
+                </div>
+                <div *ngIf="param.data.hasOwnProperty('MAN_HOURS')" class="mb-3 col-sm-4 col-lg-3 d-flex flex-column justify-content-between">
+                    <label class=" col-form-label">Man-hours</label>
+                    <div class="">
+                        <input type="number" class="form-control" [(ngModel)]="param.data.MAN_HOURS">
+                        <span class="text-danger">{{MAN_HOURSMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="param.data.hasOwnProperty('POINT_TO_NOTE')" class=" mb-3 col-sm-4 col-lg-3 d-flex flex-column justify-content-between">
+                    <label class="col-form-label">Point To Notes</label>
+                    <div>
+                        <input type="number" class="form-control" [(ngModel)]="param.data.POINT_TO_NOTE">
+                        <span class="text-danger">{{POINT_TO_NOTEMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="param.data.hasOwnProperty('NUMBER_OF_TESTCASE')" class=" mb-3 col-sm-4 col-lg-3 d-flex flex-column justify-content-between">
+                    <label class=" col-form-label">Number of testcases</label>
+                    <div class="">
+                        <input [disabled]="param.type == 'listOfST' || param.type== 'listOfUTSpec'|| param.type== 'listOfITSpec' ? false : true" type="number" class="form-control" [(ngModel)]="param.data.NUMBER_OF_TESTCASE">
+                        <span class="text-danger">{{NUMBER_OF_TESTCASEMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="param.data.hasOwnProperty('NUMBER_OF_BUG')" class=" mb-3 col-sm-4 col-lg-3 d-flex flex-column justify-content-between">
+                    <label class=" col-form-label">Number of bugs</label>
+                    <div class="">
+                        <input type="number" class="form-control" [(ngModel)]="param.data.NUMBER_OF_BUG">
+                        <span class="text-danger">{{NUMBER_OF_BUGMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="param.data.hasOwnProperty('MAN_HOURS_FOR_TRANSLATION')" class=" mb-3 col-sm-4 col-lg-3 d-flex flex-column justify-content-between">
+                    <label class="col-form-label">Man-hours for translation</label>
+                    <div>
+                        <input type="number" class="form-control" [(ngModel)]="param.data.MAN_HOURS_FOR_TRANSLATION">
+                        <span class="text-danger">{{MAN_HOURS_FOR_TRANSLATIONMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="param.data.hasOwnProperty('MAN_HOURS_FOR_AGGREGATION')" class=" mb-3 col-sm-4 col-lg-3 d-flex flex-column justify-content-between">
+                    <label class="col-form-label">Man-hours for aggregation</label>
+                    <div>
+                        <input type="number" class="form-control" [(ngModel)]="param.data.MAN_HOURS_FOR_AGGREGATION">
+                        <span class="text-danger">{{MAN_HOURS_FOR_AGGREGATIONMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="param.data.hasOwnProperty('MAN_HOURS_FOR_REVIEW')" class=" mb-3 col-sm-4 col-lg-3 d-flex flex-column justify-content-between">
+                    <label class=" col-form-label">Man-hours for review/fix</label>
+                    <div class="">
+                        <input type="number" class="form-control" [(ngModel)]="param.data.MAN_HOURS_FOR_REVIEW">
+                        <span class="text-danger">{{MAN_HOURS_FOR_REVIEWMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="param.data.hasOwnProperty('NUMBER_OF_PAGE')" class=" mb-3 col-sm-4 col-lg-3 d-flex flex-column justify-content-between">
+                    <label class=" col-form-label">Number of pages</label>
+                    <div class="">
+                        <input type="number" class="form-control" [(ngModel)]="param.data.NUMBER_OF_PAGE">
+                        <span class="text-danger">{{NUMBER_OF_PAGEMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="param.data.hasOwnProperty('NUMBER_OF_STEP')" class=" mb-3 col-sm-4 col-lg-3 d-flex flex-column justify-content-between">
+                    <label class=" col-form-label">Number of step</label>
+                    <div class="">
+                        <input type="number" class="form-control" [(ngModel)]="param.data.NUMBER_OF_STEP">
+                        <span class="text-danger">{{NUMBER_OF_STEPMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="param.data.hasOwnProperty('NUMBER_OF_COMMENT')" class=" mb-3 col-sm-4 col-lg-3 d-flex flex-column justify-content-between">
+                    <label class=" col-form-label">{{commenTitle}}</label>
+                    <div class="">
+                        <input type="number" class="form-control" [(ngModel)]="param.data.NUMBER_OF_COMMENT">
+                        <span class="text-danger">{{NUMBER_OF_COMMENTMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="param.data.hasOwnProperty('NUMBER_OF_QA')" class=" mb-3 col-sm-4 col-lg-3 d-flex flex-column justify-content-between">
+                    <label class=" col-form-label">Number of QAs</label>
+                    <div class="">
+                        <input type="number" class="form-control" [(ngModel)]="param.data.NUMBER_OF_QA">
+                        <span class="text-danger">{{NUMBER_OF_QAMessage}}</span>
+                    </div>
+                </div>
+                <div class="row justify-content-end">
+                    <div class="">
+                        <button type="submit" class="btn btn-primary" (click)="handleSubmitEdit()">Send</button>
+                        <button type="submit" class="btn btn-primary ms-3" (click)="handleCancleEdit()">Cancle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
